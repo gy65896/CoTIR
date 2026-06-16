@@ -37,8 +37,8 @@
 
 ### Install
 
-- python 3.8.20
-- cuda 11.7
+- python 3.10
+- cuda 12.1
 
 ```
 # git clone this repository
