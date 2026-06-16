@@ -55,9 +55,9 @@ CoTIR checkpoints only contain the **LoRA** and **CoT adapter** weights. You als
 
 | CoTIR Model | Base Model (required) |
 |-------------|------------------------|
+| CoTIR-12B | [FLUX.1-Kontext-dev](https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev) |
 | CoTIR-4B | [FLUX.2-klein-4B](https://huggingface.co/black-forest-labs/FLUX.2-klein-4B) |
 | CoTIR-9B | [FLUX.2-klein-9B](https://huggingface.co/black-forest-labs/FLUX.2-klein-9B) |
-| CoTIR-12B | [FLUX.1-Kontext-dev](https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev) |
 
 Download the base models:
 
@@ -85,9 +85,9 @@ inference:
 
 | Model | Config |
 |-------|--------|
+| CoTIR-12B | `configs/test_cotir-12b.yaml` |
 | CoTIR-4B | `configs/test_cotir-4b.yaml` |
 | CoTIR-9B | `configs/test_cotir-9b.yaml` |
-| CoTIR-12B | `configs/test_cotir-12b.yaml` |
 
 ### Train
 
