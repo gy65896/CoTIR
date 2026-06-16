@@ -135,7 +135,45 @@ python test.py \
 
 ### Evaluation
 
-Evaluation scripts and instructions will be released soon.
+Compute folder-level mean metrics with `evaluate.py`. Result images are matched to HQ by filename, and the summary is saved as `metrics_summary.txt` in each evaluated folder.
+
+Metrics: `clipiqa_plus`, `qalign`, `liqe`, `maclip`, `clip_iqa`, `psnr`, `ssim`, `lpips`.
+
+Evaluate a single result folder:
+
+```bash
+python evaluate.py \
+  --hq-dir /path/to/hq \
+  --method-root /path/to/results/method/
+```
+
+Adjust paths for your local CoTIR-Bench results directory:
+
+```bash
+python evaluate.py \
+  --hq-dir /path/to/hq \
+  --method-root /path/to/results/
+```
+
+Explanation: images under `<method>/precise/` (or `<method>/`) will be matched with `test/hq/` by filename. Each evaluated image folder will generate `metrics_summary.txt`.
+
+Expected layout:
+```
+method/
+├── CoTIR-FLUX.1-12B/
+│   ├── precise/
+│   └── vague/
+└── PromptIR/
+    ├── precise/
+    └── vague/
+```
+
+Output example (`metrics_summary.txt`):
+
+```
+method & clipiqa_plus & qalign & liqe & maclip & clip_iqa & psnr & ssim & lpips
+CoTIR-FLUX.1-12B & 0.6137 & 3.7834 & 3.5136 & 0.5370 & 0.5011 & 24.36 & 0.8015 & 0.1243
+```
 
 > **Note:** Locally reproduced results may show minor deviations from the numbers reported in the paper. To obtain the exact results used in our evaluation, please download the pre-computed outputs from the corresponding branches of [CoTIR-Bench](https://huggingface.co/datasets/gy65896/CoTIR-Bench):
 >
@@ -191,6 +229,13 @@ Usage:
 
 Results are saved under the output directory shown in the UI.
 
+### Demo Video
+
+<div align="center">
+<video src="https://github.com/gy65896/CoTIR/blob/main/img/Cotir_Demo_720P.mp4" width="720" controls autoplay muted loop playsinline>
+  Your browser does not support the video tag.
+</video>
+</div>
 
 ### Citation 
 

@@ -17,6 +17,42 @@ from .flux2.util import FLUX2_MODEL_INFO, load_ae as load_ae_flux2, load_text_en
 # Common tensor/image utils
 # =========================
 
+# =========================
+# Transformers torch.load safety patch (for qalign metric)
+# =========================
+# Some environments ship torch < 2.6, while `transformers` now enforces
+# a safety gate for `torch.load`. `pyiqa`'s `qalign` metric depends on
+# a legacy model loading path and may fail unless we bypass the gate.
+_TRANSFORMERS_TORCH_LOAD_SAFETY_PATCHED = False
+
+
+def patch_transformers_torch_load_safety_once() -> bool:
+    """
+    Patch transformers' internal `check_torch_load_is_safe` to bypass the
+    torch>=2.6 version restriction.
+
+    This is intended for local/trusted evaluation only.
+    """
+    global _TRANSFORMERS_TORCH_LOAD_SAFETY_PATCHED
+    if _TRANSFORMERS_TORCH_LOAD_SAFETY_PATCHED:
+        return True
+    try:
+        import transformers.utils.import_utils as iu
+        import transformers.modeling_utils as mu
+
+        iu.check_torch_load_is_safe = lambda: None
+        mu.check_torch_load_is_safe = lambda: None
+        _TRANSFORMERS_TORCH_LOAD_SAFETY_PATCHED = True
+        print(
+            "[warn] Enabled transformers torch.load safety patch for qalign. "
+            "Use only with locally trusted weights.",
+            flush=True,
+        )
+        return True
+    except Exception as exc:
+        print(f"[warn] Failed to enable torch.load safety patch: {exc}", flush=True)
+        return False
+
 def check_tensor_consistency(data_dict, expected_device, expected_dtype, func_name=""):
     for k, v in data_dict.items():
         if isinstance(v, torch.Tensor):
