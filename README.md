@@ -1,5 +1,5 @@
 <div align="center">
-<img align="left" width="200" height="200" src="https://github.com/gy65896/CoTIR/blob/main/img/cotir.png" alt="">
+<img align="left" width="180" height="180" src="https://github.com/gy65896/CoTIR/blob/main/img/cotir.png" alt="">
     
 ## [Arxiv 2026] Universal Image Restoration via Internalized<br> Chain-of-Thought Reasoning
 
