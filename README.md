@@ -160,7 +160,7 @@ You can also pass a prompt text file:
 ```bash
 python inference.py \
   --config configs/test_cotir-9b.yaml \
-  --lq ./path/to/lq.png \
+  --lq ./samples/images/000018.png \
   --prompt ./samples/prompts/000018.txt \
   --output_root outputs
 ```
