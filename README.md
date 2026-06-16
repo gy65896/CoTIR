@@ -23,7 +23,7 @@
 ---
 
 ## News 🚀
-* **2026.06.16**: Code is released.
+* **2026.06.16**: Code, Checkpoint, and Test dataset are released.
 
 
 ## Method Architecture
