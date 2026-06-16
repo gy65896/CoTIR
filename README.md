@@ -32,3 +32,21 @@
 <div align=center>
 <img src="https://github.com/gy65896/CoTIR/blob/main/img/method.jpg" width="1080">
 </div>
+
+## Quick Start
+
+### Install
+
+- python 3.8.20
+- cuda 11.7
+
+```
+# git clone this repository
+git clone https://github.com/gy65896/CoTIR.git
+cd CoTIR
+
+# create new anaconda env
+conda env create -f environment.yml
+```
+
+### Pretrained Models
