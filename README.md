@@ -1,7 +1,7 @@
 <div align="center">
 <img align="left" width="125" height="125" src="https://github.com/gy65896/CoTIR/blob/main/img/cotir.png" alt="">
     
-## Universal Image Restoration via Internalized<br> Chain-of-Thought Reasoning
+## [Arxiv 2026] Universal Image Restoration via Internalized<br> Chain-of-Thought Reasoning
 
 [![ArXiv](https://img.shields.io/badge/CoTIR-ArXiv-red.svg)]()
 [![Paper](https://img.shields.io/badge/CoTIR-Paper-yellow.svg)]()
