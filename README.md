@@ -232,9 +232,11 @@ Results are saved under the output directory shown in the UI.
 ### Demo Video
 
 <div align="center">
-<video src="https://raw.githubusercontent.com/gy65896/CoTIR/main/img/Cotir_Demo_720P.mp4" width="720" controls autoplay muted loop playsinline>
-  Your browser does not support the video tag.
-</video>
+
+
+https://github.com/user-attachments/assets/bf6015a6-d6aa-4645-8d6f-01aa1cbb752a
+
+
 </div>
 
 ### Citation 
