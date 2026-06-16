@@ -186,3 +186,11 @@ Usage:
 4. Adjust `num_steps` and other options if needed, then click **Run Inference**.
 
 Results are saved under the output directory shown in the UI.
+
+
+### Citation
+
+```
+@inproceedings{,
+}
+```
