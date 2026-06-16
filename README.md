@@ -50,3 +50,139 @@ conda env create -f environment.yml
 ```
 
 ### Pretrained Models
+
+CoTIR checkpoints only contain the **LoRA** and **CoT adapter** weights. You also need to download the corresponding base FLUX models from Black Forest Labs (accept the license on Hugging Face before downloading):
+
+| CoTIR Model | Base Model (required) |
+|-------------|------------------------|
+| CoTIR-4B | [FLUX.2-klein-4B](https://huggingface.co/black-forest-labs/FLUX.2-klein-4B) |
+| CoTIR-9B | [FLUX.2-klein-9B](https://huggingface.co/black-forest-labs/FLUX.2-klein-9B) |
+| CoTIR-12B | [FLUX.1-Kontext-dev](https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev) |
+
+Download the base models:
+
+```bash
+git clone https://huggingface.co/black-forest-labs/FLUX.2-klein-4B
+git clone https://huggingface.co/black-forest-labs/FLUX.2-klein-9B
+git clone https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev
+```
+
+Download the [CoTIR LoRA and adapter weights](https://huggingface.co/gy65896/CoTIR) and place them under `./ckpt/`:
+
+```bash
+git clone https://huggingface.co/gy65896/CoTIR
+```
+
+Before running inference or testing, update the checkpoint paths in `configs/test_cotir-4b.yaml`, `configs/test_cotir-9b.yaml`, or `configs/test_cotir-12b.yaml`:
+
+```yaml
+inference:
+  num_steps: 5
+  base_model_path: /path/to/FLUX.2-klein-9B      # base FLUX model
+  cot_adapter_path: ./ckpt/CoTIR-9B/cot_adapter.pt  # CoTIR adapter
+  lora_path: ./ckpt/CoTIR-9B/lora.pt                # CoTIR LoRA
+```
+
+| Model | Config |
+|-------|--------|
+| CoTIR-4B | `configs/test_cotir-4b.yaml` |
+| CoTIR-9B | `configs/test_cotir-9b.yaml` |
+| CoTIR-12B | `configs/test_cotir-12b.yaml` |
+
+### Train
+
+CoTIR-Bench will be released soon. After it is available, update `data.data_dir` and `model.base_model_path` in the training config, then run:
+
+```bash
+python train.py --config configs/train_cotir-9b.yaml
+```
+
+Multi-GPU training (example with 8 GPUs):
+
+```bash
+accelerate launch --num_processes 8 train.py --config configs/train_cotir-9b.yaml
+```
+
+Available training configs: `configs/train_cotir-4b.yaml`, `configs/train_cotir-9b.yaml`, `configs/train_cotir-12b.yaml`.
+
+Checkpoints are saved to `saves/` by default. Set `resume: latest` in the config to resume from the latest checkpoint.
+
+### Test
+
+Batch inference on a benchmark JSONL file. Outputs are saved to `vague/` (vague prompt) and `precise/` (precise prompt):
+
+```bash
+python test.py \
+  --model CoTIR-9B \
+  --json_path ./test/test.jsonl \
+  --lq_dir ./test/lq \
+  --output_root ./results
+```
+
+Optional arguments:
+
+```bash
+python test.py \
+  --config configs/test_cotir-9b.yaml \
+  --json_path ./test/test.jsonl \
+  --lq_dir ./test/lq \
+  --output_root ./results \
+  --batch_size 1 \
+  --max_long_edge 1024 \
+  --max_samples 100 \
+  --skip_existing
+```
+
+> **Note:** Locally reproduced results may show minor deviations from the numbers reported in the paper. To obtain the exact results used in our evaluation, please download the pre-computed outputs from the corresponding branches of [CoTIR-Bench](https://huggingface.co/datasets/gy65896/CoTIR-Bench):
+>
+> | Paper Table | Branch | Download Command |
+> |-------------|--------|------------------|
+> | Table 2 | `methods` | `git clone -b methods --single-branch https://huggingface.co/datasets/gy65896/CoTIR-Bench` |
+> | Table 3 | `single` | `git clone -b single --single-branch https://huggingface.co/datasets/gy65896/CoTIR-Bench` |
+> | Table 4 | `cotir-bench-7d` | `git clone -b cotir-bench-7d --single-branch https://huggingface.co/datasets/gy65896/CoTIR-Bench` |
+
+### Inference
+
+Single-image restoration:
+
+```bash
+python inference.py \
+  --config configs/test_cotir-9b.yaml \
+  --lq ./path/to/lq.png \
+  --prompt "Make this picture clearer." \
+  --output_root outputs \
+  --num_steps 5 \
+  --seed 42
+```
+
+You can also pass a prompt text file:
+
+```bash
+python inference.py \
+  --config configs/test_cotir-9b.yaml \
+  --lq ./path/to/lq.png \
+  --prompt ./samples/prompts/000018.txt \
+  --output_root outputs
+```
+
+### Inference with Gradio
+
+Launch the interactive demo:
+
+```bash
+python inference_gradio.py --port 7862
+```
+
+Create a public link (optional):
+
+```bash
+python inference_gradio.py --port 7862 --share
+```
+
+Usage:
+1. Enter the GPU id(s) to use and click **Init Model**.
+2. Select a model (`CoTIR-4B` / `CoTIR-9B` / `CoTIR-12B`).
+3. Upload an LQ image, optionally upload an HQ reference image, and enter a prompt.
+4. Adjust `num_steps` and other options if needed, then click **Run Inference**.
+
+Results are saved under the output directory shown in the UI.

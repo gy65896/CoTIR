@@ -1,0 +1,28 @@
+project_name: 'CoTIR-12B'
+
+model:
+  base_model_name: 'flux-dev-kontext'
+  cot_adapter:
+    hidden_size: 3072
+    num_heads: 24
+    mlp_ratio: 4.0
+    qk_scale: None
+    out_channels: 4096
+    depth: 6
+  lora:
+    enabled: true
+    rank: 96
+    scale: 1.0
+    lora_bias: true
+    merge_for_inference: false
+
+
+inference:
+  num_steps: 20
+  base_model_path: /home/guoyu/guoyu_demo/ckpt/FLUX.1-Kontext-dev
+  cot_adapter_path: ../ckpt/CoTIR-12B/cot_adapter.pt
+  lora_path: ../ckpt/CoTIR-12B/lora.pt
+
+mixed_precision: "bf16"
+device: "cuda"
+

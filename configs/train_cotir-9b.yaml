@@ -1,0 +1,66 @@
+project_name: 'CoTIR-9B'
+
+model:
+  base_model_name: 'flux.2-klein-9b'
+  base_model_path: ../FLUX.2-klein-9B
+  cot_adapter:
+    hidden_size: 4096
+    num_heads: 32
+    mlp_ratio: 4.0
+    qk_scale: None
+    out_channels: 12288
+    depth: 6
+  lora:
+    enabled: true
+    rank: 96
+    scale: 1.0
+    lora_bias: true
+    merge_for_inference: false
+
+data:
+  data_dir: ../CoTIR-Bench
+  output_dir: saves/
+  logging_dir: logs/
+  shuffle_buffer: 100 
+  balanced_target_types: null 
+  balanced_rounds: null 
+  balanced_shuffle: true
+  balanced_seed: null
+  return_deg_type: false  
+  num_workers: 4
+  test: false
+  val_batch_size: 2
+  
+
+training:
+  use_gen: {0: 0.2, 10000: 0.3, 20000: 0.4, 30000: 0.5, 40000: 0.6}
+  iterations: [20000, 40000, 60000, 120001]
+  patch_sizes: [128, 256, 384, 512]
+  batch_sizes: [6, 4, 2, 1]
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_weight_decay: 0.01
+  adam_epsilon: 1e-8
+  lr_scheduler: cosine
+  lr_warmup_steps: 2000
+  learning_rate: 5e-4
+  min_learning_rate: 5e-5
+  max_grad_norm: 1.0
+  gradient_accumulation_steps: 1
+  txt_weight_s: auto
+  txt_weight_d: auto
+  txt_weight_p: auto
+  delta_s: 1e-4
+  delta_d: 1e-4
+  delta_p: 1e-4
+  lambda_lr: 1e-4
+  val_steps: 1000
+  save_steps: 1000
+  checkpoints_total_limit: 2
+  num_steps: 20
+
+resume: latest
+mixed_precision: "bf16"
+device: "cuda"
+report_to: wandb
+
