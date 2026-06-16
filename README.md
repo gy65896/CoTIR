@@ -141,6 +141,10 @@ python test.py \
 > | Table 3 | `single` | `git clone -b single --single-branch https://huggingface.co/datasets/gy65896/CoTIR-Bench` |
 > | Table 4 | `cotir-bench-7d` | `git clone -b cotir-bench-7d --single-branch https://huggingface.co/datasets/gy65896/CoTIR-Bench` |
 
+### Evaluation
+
+Evaluation scripts and instructions will be released soon.
+
 ### Inference
 
 Single-image restoration:
@@ -191,6 +195,5 @@ Results are saved under the output directory shown in the UI.
 ### Citation
 
 ```
-@inproceedings{,
-}
+
 ```
