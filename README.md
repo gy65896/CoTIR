@@ -133,6 +133,10 @@ python test.py \
   --skip_existing
 ```
 
+### Evaluation
+
+Evaluation scripts and instructions will be released soon.
+
 > **Note:** Locally reproduced results may show minor deviations from the numbers reported in the paper. To obtain the exact results used in our evaluation, please download the pre-computed outputs from the corresponding branches of [CoTIR-Bench](https://huggingface.co/datasets/gy65896/CoTIR-Bench):
 >
 > | Paper Table | Branch | Download Command |
@@ -140,10 +144,6 @@ python test.py \
 > | Table 2 | `methods` | `git clone -b methods --single-branch https://huggingface.co/datasets/gy65896/CoTIR-Bench` |
 > | Table 3 | `single` | `git clone -b single --single-branch https://huggingface.co/datasets/gy65896/CoTIR-Bench` |
 > | Table 4 | `cotir-bench-7d` | `git clone -b cotir-bench-7d --single-branch https://huggingface.co/datasets/gy65896/CoTIR-Bench` |
-
-### Evaluation
-
-Evaluation scripts and instructions will be released soon.
 
 ### Inference
 
