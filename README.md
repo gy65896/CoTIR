@@ -3,8 +3,8 @@
     
 ## [Arxiv 2026] Universal Image Restoration via Internalized<br> Chain-of-Thought Reasoning
 
-[![ArXiv](https://img.shields.io/badge/CoTIR-ArXiv-red.svg)]()
-[![Paper](https://img.shields.io/badge/CoTIR-Paper-yellow.svg)]()
+[![ArXiv](https://img.shields.io/badge/CoTIR-ArXiv-red.svg)](https://arxiv.org/pdf/2606.17557)
+[![Paper](https://img.shields.io/badge/CoTIR-Paper-yellow.svg)](https://arxiv.org/pdf/2606.17557)
 [![Web](https://img.shields.io/badge/CoTIR-Web-blue.svg)](https://gy65896.github.io/projects/ArXiv2026_CoTIR/index.html)
  
 </div>
