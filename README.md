@@ -242,5 +242,13 @@ https://github.com/user-attachments/assets/bf6015a6-d6aa-4645-8d6f-01aa1cbb752a
 ### Citation 
 
 ```
-
+@misc{guo2026universalimagerestorationinternalized,
+      title={Universal Image Restoration via Internalized Chain-of-Thought Reasoning}, 
+      author={Yu Guo and Zhengru Fang and Shengfeng He and Senkang Hu and Yihang Tao and Phone Lin and Yuguang Fang},
+      year={2026},
+      eprint={2606.17557},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2606.17557}, 
+}
 ```
