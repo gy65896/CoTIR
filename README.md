@@ -14,7 +14,7 @@
 </div>
 
 ---
->**Universal Image Restoration via Internalized Chain-of-Thought Reasoning**<br> [Yu Guo](https://scholar.google.com/citations?user=klYz-acAAAAJ&hl=zh-CN)<sup>† </sup>, [Zhengru Fang](https://scholar.google.com/citations?user=yggQMJMAAAAJ)<sup>† </sup>, [Shengfeng He](https://scholar.google.com/citations?user=rBWnK8wAAAAJ), [Senkang Hu](https://scholar.google.com/citations?user=rtPVwT8AAAAJ), [Yihang Tao](https://scholar.google.com/citations?user=YopoapwAAAAJ), [Phone Lin](https://www.csie.ntu.edu.tw/~plin/), [Yuguang Fang](https://scholar.google.com/citations?user=cs45mqMAAAAJ)<br>
+>**Universal Image Restoration via Internalized Chain-of-Thought Reasoning**<br> [Yu Guo](https://scholar.google.com/citations?view_op=list_works&user=5qAe9ZMAAAAJ)<sup>† </sup>, [Zhengru Fang](https://scholar.google.com/citations?user=yggQMJMAAAAJ)<sup>† </sup>, [Shengfeng He](https://scholar.google.com/citations?user=rBWnK8wAAAAJ), [Senkang Hu](https://scholar.google.com/citations?user=rtPVwT8AAAAJ), [Yihang Tao](https://scholar.google.com/citations?user=YopoapwAAAAJ), [Phone Lin](https://www.csie.ntu.edu.tw/~plin/), [Yuguang Fang](https://scholar.google.com/citations?user=cs45mqMAAAAJ)<br>
 († Co-first Author)<br>
 >Arxiv<br>
 
